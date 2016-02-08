@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h2>Your notes</h2>
+
+
+      <div id="notes" class="container-fluid">
+        <div class="row">
+          <div id="todo" class="col-xs-3">
+  
+    <% @to_do_notes.all.group_by(&:title).each do |title,notes| %>
+      <br>
+      <h4><strong><%=title.upcase%></strong></h4>
+
+
+            <%notes.each do |notes|%>
+              <%= check_box_tag(notes.notes, value = "true", checked = notes.done)%>
+              <%=notes.notes%> 
+              <%= link_to "Edit", edit_to_do_note_path(notes), class: 'btn btn-default' %>
+              <%= link_to "Delete", notes , class: 'btn btn-default', method: :delete, data: { confirm: 'Are you sure?' }%>
+              <br>
+            <%end %>
+      
+    <% end %>
+  
+    </div>
+          
+        </div>
+      </div>   
+      
+  
+
+<br>
+
+
+<%= link_to 'New To do note', new_to_do_note_path, class: 'btn btn-success' %>

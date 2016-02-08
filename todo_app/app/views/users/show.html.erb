@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<h1>Hello <%=@user.name %>,</h1>
+<br>
+<h3>Your notes:</h3>
+<br>
+<%= link_to '<button type="button">New note</button>'.html_safe, new_user_path%>
+<%= link_to '<button type="button">Edit</button>'.html_safe, edit_user_path(@user) %> 
+<%= link_to '<button type="button">Share</button>'.html_safe, '#' %>

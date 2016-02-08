@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @to_do_note.title %>
+</p>
+<br>
+<p>
+  <strong>Done:</strong>
+  <%= @to_do_note.done %>
+</p>
+
+<p>
+  <strong>Notes:</strong>
+  <%= @to_do_note.notes %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @to_do_note.user_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_to_do_note_path(@to_do_note) %> |
+<%= link_to 'Back', to_do_notes_path %>

@@ -1,0 +1,34 @@
+<%= form_for(@to_do_note) do |f| %>
+  <% if @to_do_note.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@to_do_note.errors.count, "error") %> prohibited this to_do_note from being saved:</h2>
+
+      <ul>
+      <% @to_do_note.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br>
+    <%= f.text_field :title %>
+  </div>
+  <div class="field">
+    <%= f.label :notes %><br>
+    <%= f.text_field :notes %>
+  </div>
+  <div class="field">
+    <%= f.label :user_id %><br>
+    <%= f.number_field :user_id %>
+  </div>
+  <div class="field">
+    <%= f.check_box :done%>
+    <%= f.label :Done%><br>
+    
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
