@@ -15,6 +15,8 @@ class ToDoNotesController < ApplicationController
   # GET /to_do_notes/new
   def new
     @to_do_note = ToDoNote.new
+    #@to_do_note.user_id=current_user.id
+    params[:user_id] = current_user.id
   end
 
   # GET /to_do_notes/1/edit

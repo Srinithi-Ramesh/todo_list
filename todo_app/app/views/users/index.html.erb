@@ -2,29 +2,30 @@
 
 <h1>Listing Users</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Email</th>
-      <th colspan="6"></th>
-    </tr>
-    
-  </thead>
+<% @var=ToDoNote.all %>
+<% @var.all.group_by(&:user_id).each do |user_id,list| %>
+  <%if(user_id == @currentUser)%>
+    <h3>Your notes</h3>
+    <% list.group_by(&:title).each do |title,notes| %>
+      <h4><strong><%=title.upcase%></strong></h4>
+      <%notes.each do |notes|%>
+        <%= check_box_tag(notes.notes, value = "true", checked = notes.done)%>
+        <%=notes.notes%> 
+      <% end %>
+    <%end%>
+  <%else%>
+    <h3>Friends notes</h3>
+    <% list.group_by(&:title).each do |title,notes| %>
+      <h4><strong><%=title.upcase%></strong></h4>
+      <%notes.each do |notes|%>
+        <%= check_box_tag(notes.notes, value = "true", checked = notes.done)%>
+        <%=notes.notes%> 
+      <% end %>
+    <%end%> 
+<%end%>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-        <td><%= user.name %></td>
-        <td><%= user.email %></td>
-        <td><%= link_to "Show", user, class: 'btn btn-warning' %></td>
-        <td><%= link_to "Edit", edit_user_path(user), class: 'btn btn-warning'%></td>
-        <td><%= link_to '<button type="button">Destroy</button>'.html_safe, user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+
+<%end%>
 
 <br>
-
-<%= link_to 'New User', new_user_path %>
+<%= link_to 'New note', new_to_do_note_path %>

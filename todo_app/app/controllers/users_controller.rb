@@ -4,13 +4,16 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+    #@users = User.all
     #@user = User.find(params[1]) 
+    @currentUser = current_user.id
+    #@currentUser=1
   end
 
   # GET /users/1
   # GET /users/1.json
   def show
+    params[:user_id] = current_user.id
   end
 
   # GET /users/new
@@ -70,6 +73,6 @@ class UsersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :email)
+      params.require(:user).permit(:name, :email, :password)
     end
 end

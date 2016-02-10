@@ -7,7 +7,7 @@ class CreateToDoNotes < ActiveRecord::Migration
       t.boolean :done
 
       t.timestamps null: false
-      #t.boolean done: false
+      
     end
   end
 end
